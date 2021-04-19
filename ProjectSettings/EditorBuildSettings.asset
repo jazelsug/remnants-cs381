@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/StreetScene.unity
+    guid: 5667077b949ecd94fa55aa9cab263815
   m_configObjects: {}
