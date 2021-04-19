@@ -6,7 +6,7 @@ public static class Utils
 {
 
 
-    public static float EPSILON = 0.01f;
+    public static float EPSILON = 0.5f;    //orig. 0.01f
     public static bool ApproximatelyEqual(float a, float b)
     {
         return (Mathf.Abs(a - b) < EPSILON);

@@ -36,7 +36,8 @@ public class VehicleOrientedPhysics : MonoBehaviour
         //heading
         if (Utils.ApproximatelyEqual(entity.heading, entity.desiredHeading))
         {
-            ;
+            //ADDED IN TO STOP WIGGLING
+            entity.heading = entity.desiredHeading;
         }
         else if (Utils.AngleDiffPosNeg(entity.desiredHeading, entity.heading) > 0)
         {
