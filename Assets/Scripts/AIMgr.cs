@@ -21,7 +21,7 @@ public class AIMgr : MonoBehaviour
     void Start()
     {
         StartCoroutine(spawnMonsters());
-        rb = this.GetComponent<Rigidbody>();
+        rb = monster.GetComponent<Rigidbody>();
     }
 
     void Update()
