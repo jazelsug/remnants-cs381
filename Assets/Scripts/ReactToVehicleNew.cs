@@ -16,7 +16,7 @@ public class ReactToVehicleNew : MonoBehaviour
     public float dist;
     public float distanceToReact = 10.0f;
     //FollowVehicle fv;
-    public double moveDelta = 0.05;
+    public float moveDelta = 0.05f; //used to be a double
     //Rigidbody devilRB;
 
     // Start is called before the first frame update
@@ -25,6 +25,9 @@ public class ReactToVehicleNew : MonoBehaviour
         anim = devil.GetComponent<Animator>();
         //devilRB = devil.GetComponent<Rigidbody>();
     }
+
+    //float step = speed * Time.deltaTime; // calculate distance to move
+    //transform.position = Vector3.MoveTowards(transform.position, target.position, step);
 
     // Update is called once per frame
     void Update()
@@ -38,7 +41,8 @@ public class ReactToVehicleNew : MonoBehaviour
             //fv = new FollowVehicle(devil, vehicle, new Vector3(100, 0, 0));
             Vector3 movement = new Vector3(vehicle.transform.position.x, 0.0f, vehicle.transform.position.z);
             //devilRB.AddForce(movement * devil.maxSpeed);
-            devil.transform.position = new Vector3(devil.transform.position.x, 0.0f, devil.transform.position.z - 0.1f);    //TODO: fix!!!!
+            //devil.transform.position = new Vector3(devil.transform.position.x, 0.0f, devil.transform.position.z - 0.1f);    //TODO: fix!!!!
+            devil.transform.position = Vector3.MoveTowards(devil.transform.position, vehicle.transform.position, moveDelta * Time.deltaTime);
         }
     }
 }
