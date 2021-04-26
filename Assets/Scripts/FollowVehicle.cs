@@ -5,6 +5,8 @@ using UnityEngine;
 public class FollowVehicle : MonoBehaviour
 {
     public GameObject vehicle;
+    public GameObject devil;
+    public Vector3 relativeOffset;
 
     // Start is called before the first frame update
     void Start()
