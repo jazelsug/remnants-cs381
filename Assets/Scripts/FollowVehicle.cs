@@ -10,7 +10,7 @@ public class FollowVehicle : Move
     public Vector3 offset;
     public float followThreshold = 2000;
 
-    public FollowVehicle(Entity monster, Entity player, Vector3 delta)
+    public FollowVehicle(Entity monster, Entity player, Vector3 delta) : base(monster, player.transform.position)
     {
         devil = monster;
         vehicle = player;

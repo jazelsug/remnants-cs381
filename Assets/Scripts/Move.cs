@@ -2,10 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// supposed to inherit nothing... TODO: fix
 public class Move : MonoBehaviour
 {
     public Vector3 movePosition;
     public Entity entity;
+
+    public Move(Entity ent, Vector3 pos)
+    {
+        entity = ent;
+        movePosition = pos;
+    }
 
     public virtual void Tick()
     {

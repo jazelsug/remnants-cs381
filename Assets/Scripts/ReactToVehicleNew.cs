@@ -10,16 +10,20 @@ public class ReactToVehicleNew : MonoBehaviour
         inst = this;
     }
 
-    public GameObject vehicle;
+    public Entity vehicle;
     public Animator anim;
-    public GameObject devil;
+    public Entity devil;
     public float dist;
     public float distanceToReact = 10.0f;
+    //FollowVehicle fv;
+    public double moveDelta = 0.05;
+    //Rigidbody devilRB;
 
     // Start is called before the first frame update
     void Start()
     {
         anim = devil.GetComponent<Animator>();
+        //devilRB = devil.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -31,6 +35,10 @@ public class ReactToVehicleNew : MonoBehaviour
         {
             anim.ResetTrigger("Idle");
             anim.SetTrigger("Fly");
+            //fv = new FollowVehicle(devil, vehicle, new Vector3(100, 0, 0));
+            Vector3 movement = new Vector3(vehicle.transform.position.x, 0.0f, vehicle.transform.position.z);
+            //devilRB.AddForce(movement * devil.maxSpeed);
+            devil.transform.position = new Vector3(devil.transform.position.x, 0.0f, devil.transform.position.z - 0.1f);    //TODO: fix!!!!
         }
     }
 }
