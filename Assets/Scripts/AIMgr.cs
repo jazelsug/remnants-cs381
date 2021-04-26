@@ -27,11 +27,11 @@ public class AIMgr : MonoBehaviour
     void Update()
     {
         Vector3 direction = player.position - transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        //float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-        //rb.rotation = angle;
-        //direction.Normalize();
-        //movement = direction;
+        rb.rotation = Quaternion.Euler(direction * Time.deltaTime);
+        direction.Normalize();
+        movement = direction;
     }
 
     private void FixedUpdate()
