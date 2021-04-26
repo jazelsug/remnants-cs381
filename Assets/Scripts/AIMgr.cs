@@ -40,7 +40,7 @@ public class AIMgr : MonoBehaviour
             xPos = Random.Range(357, 401);      // random number from 357 to 400
             zPos = Random.Range(444, 539);      // random number from 444 to 538
 
-            Instantiate(monster, new Vector3(xPos, 70.28f, zPos), Quaternion.identity);
+            Instantiate(monster, new Vector3(xPos, 0.32f, zPos), Quaternion.identity); // orig. y = 10.28f
             yield return new WaitForSeconds(0.1f);
 
             monsterCount++;
