@@ -19,6 +19,7 @@ public class ReactToVehicleNew : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Devils will start flying (moving towards Vehicle??) if Vehicle is at a close enough distance.
         dist = Vector3.Distance(vehicle.transform.position, devil.transform.position);
         if (dist < distanceToReact)
         {
