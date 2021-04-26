@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class ReactToVehicleNew : MonoBehaviour
 {
+    public static ReactToVehicleNew inst;
+    private void Awake()
+    {
+        inst = this;
+    }
+
     public GameObject vehicle;
     public Animator anim;
     public GameObject devil;
