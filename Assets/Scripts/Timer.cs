@@ -34,7 +34,9 @@ public class Timer : MonoBehaviour
             //timer ran out
             timeRemaining = 0;
             timerIsRunning = false;
+            Time.timeScale = 0; //freeze game objects TEST
             GameOverPanelDisplay.inst.gameObject.SetActive(true);
+            //otherObject.GetComponent<NameOfScript>().enabled = false;
         }
         //update timeText
         DisplayTime(timeRemaining);
