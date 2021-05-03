@@ -27,6 +27,7 @@ public class SimpleFollowPlayer : MonoBehaviour
             anim.ResetTrigger("Idle");
             anim.SetTrigger("Fly");
             // enemy will now only follow if the boolean enemyShouldFollow is true
+            transform.LookAt(target.position); //With this line the obj rotate
             transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);  //orig. Vector2
 
         }
