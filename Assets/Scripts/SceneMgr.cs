@@ -35,10 +35,16 @@ public class SceneMgr : MonoBehaviour
         SceneManager.LoadScene(2);
     }
 
-    public void AfterGameGoToMenu()
+    public void GoToMenu()
     {
         //Scene 1 is Menu
         SceneManager.LoadScene(1);
+    }
+
+    public void GoToCredits()
+    {
+        //Scene 3 is Credits
+        SceneManager.LoadScene(3);
     }
 
     public void QuitGame()
