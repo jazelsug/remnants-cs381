@@ -10,7 +10,8 @@ public class ReactToVehicleNew : MonoBehaviour
         inst = this;
     }
 
-    public Entity vehicle;
+    //public Entity vehicle;
+    public GameObject vehicle;
     public Animator anim;
     public Entity devil;
     public float dist;
