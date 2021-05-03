@@ -32,6 +32,12 @@ public class SceneMgr : MonoBehaviour
         SceneManager.LoadScene(2);
     }
 
+    public void AfterGameGoToMenu()
+    {
+        //Scene 1 is Menu
+        SceneManager.LoadScene(1);
+    }
+
     public void QuitGame()
     {
         Debug.Log("QUIT GAME");
