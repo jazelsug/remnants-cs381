@@ -5,7 +5,14 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    private bool timerIsRunning = false;
+    static public Timer inst;
+
+    private void Awake()
+    {
+        inst = this;
+    }
+
+    public bool timerIsRunning = false;
     public float timeRemaining = 60;    //60 seconds
 
     // Start is called before the first frame update
@@ -27,6 +34,7 @@ public class Timer : MonoBehaviour
             //timer ran out
             timeRemaining = 0;
             timerIsRunning = false;
+            GameOverPanelDisplay.inst.gameObject.SetActive(true);
         }
         //update timeText
         DisplayTime(timeRemaining);
