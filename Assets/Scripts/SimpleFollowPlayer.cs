@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SimpleFollowPlayer : MonoBehaviour
 {
+    public Animator anim;
     public float speed;
     private Transform target;
     public float dist;
@@ -13,6 +14,7 @@ public class SimpleFollowPlayer : MonoBehaviour
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -22,8 +24,10 @@ public class SimpleFollowPlayer : MonoBehaviour
         dist = Vector3.Distance(target.transform.position, transform.position);
         if (dist < distanceToReact)
         {
+            anim.ResetTrigger("Idle");
+            anim.SetTrigger("Fly");
             // enemy will now only follow if the boolean enemyShouldFollow is true
-            transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);  //orig. Vector2
 
         }
     }
