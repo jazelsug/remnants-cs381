@@ -19,6 +19,7 @@ public class Timer : MonoBehaviour
     void Start()
     {
         timerIsRunning = true;
+        Time.timeScale = 1; //ensure that timeScale is set back to 1
     }
 
     // Update is called once per frame
