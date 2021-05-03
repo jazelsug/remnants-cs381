@@ -38,6 +38,10 @@ public class SimpleFollowPlayer : MonoBehaviour
         // change player name for the name of your players game object
         if (col.gameObject.name == "Car")
         {
+            //increment kill counter
+            MonsterKillCounter.inst.count++;
+
+            //destroy devil
             Destroy(gameObject);
         }
     }
