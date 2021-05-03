@@ -29,6 +29,7 @@ public class SceneMgr : MonoBehaviour
     public void PlayGame()
     {
         //Scene 2 is StreetScene
+        sceneIndex = 2;
         SceneManager.LoadScene(2);
     }
 
