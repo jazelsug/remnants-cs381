@@ -5,6 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class SceneMgr : MonoBehaviour
 {
+    public static SceneMgr inst;
+
+    private void Awake()
+    {
+        inst = this;
+    }
+
     /*
     public static int sceneIndex;
 

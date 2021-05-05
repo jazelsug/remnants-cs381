@@ -5,6 +5,7 @@ using UnityEngine;
 public class PauseMgr : MonoBehaviour
 {
     public GameObject PausePanel;
+    public GameObject GametimePanel;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,7 @@ public class PauseMgr : MonoBehaviour
             //P is pressed and Pause Panel is inactive
             Timer.inst.timerIsRunning = false;  //pause the timer
             Time.timeScale = 0; //freeze objects that depend on Time
+            GametimePanel.SetActive(false); //deactivate the Gametime Panel
             PausePanel.SetActive(true);
         }
         else if(PausePanel.activeSelf && Input.GetKeyUp(KeyCode.P))
@@ -29,6 +31,7 @@ public class PauseMgr : MonoBehaviour
             PausePanel.SetActive(false);
             Time.timeScale = 1;
             Timer.inst.timerIsRunning = true;
+            GametimePanel.SetActive(true);
         }
     }
 }
