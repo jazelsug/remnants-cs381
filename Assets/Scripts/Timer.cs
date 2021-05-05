@@ -30,9 +30,9 @@ public class Timer : MonoBehaviour
             //decrement timer
             timeRemaining -= Time.deltaTime;
         }
-        else
+        else if (!timerIsRunning && timeRemaining <= 0)
         {
-            //timer ran out
+            //timer ran out and timer is not running
             timeRemaining = 0;
             timerIsRunning = false;
             Time.timeScale = 0; //freeze game objects TEST
