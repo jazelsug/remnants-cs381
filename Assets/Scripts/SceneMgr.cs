@@ -47,6 +47,12 @@ public class SceneMgr : MonoBehaviour
         SceneManager.LoadScene(3);
     }
 
+    public void GoToFragments()
+    {
+        //Scene 4 is Fragments
+        SceneManager.LoadScene(4);
+    }
+
     public void QuitGame()
     {
         Debug.Log("QUIT GAME");
