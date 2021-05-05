@@ -30,7 +30,7 @@ public class Timer : MonoBehaviour
             //decrement timer
             timeRemaining -= Time.deltaTime;
         }
-        else if (!timerIsRunning && timeRemaining <= 0)
+        else if (timeRemaining <= 0)
         {
             //timer ran out and timer is not running
             timeRemaining = 0;

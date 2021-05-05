@@ -6,6 +6,7 @@ public class PauseMgr : MonoBehaviour
 {
     public GameObject PausePanel;
     public GameObject GametimePanel;
+    public GameObject ConfirmQuitPanel;
 
     // Start is called before the first frame update
     void Start()
@@ -17,9 +18,9 @@ public class PauseMgr : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!PausePanel.activeSelf && Input.GetKeyUp(KeyCode.P))
+        if (!PausePanel.activeSelf && Input.GetKeyUp(KeyCode.P) && !ConfirmQuitPanel.activeSelf)
         {
-            //P is pressed and Pause Panel is inactive
+            //P is pressed, Pause Panel is inactive, and ConfirmQuit Panel is inactive
             Timer.inst.timerIsRunning = false;  //pause the timer
             Time.timeScale = 0; //freeze objects that depend on Time
             GametimePanel.SetActive(false); //deactivate the Gametime Panel

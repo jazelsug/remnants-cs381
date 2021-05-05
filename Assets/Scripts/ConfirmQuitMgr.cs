@@ -19,16 +19,6 @@ public class ConfirmQuitMgr : MonoBehaviour
         
     }
 
-    public void QuitToMenu()
-    {
-        //ensure timer is stopped
-        Timer.inst.timerIsRunning = false;
-        Timer.inst.timeRemaining = 0;
-
-        //load menu scene using SceneMgr
-        SceneMgr.inst.GoToMenu();
-    }
-
     public void DisplayConfirmPanel()
     {
         PausePanel.SetActive(false);
