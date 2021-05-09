@@ -9,6 +9,7 @@ public class SimpleFollowPlayer : MonoBehaviour
     private Transform target;
     public float dist;
     public float distanceToReact = 10.0f;
+    public GameObject fragmentDrop;
 
     // Use this for initialization
     void Start()
@@ -43,6 +44,9 @@ public class SimpleFollowPlayer : MonoBehaviour
 
             //destroy devil
             Destroy(gameObject);
+
+            // Spawn fragment
+            Instantiate(fragmentDrop, transform.position, Quaternion.identity);
         }
     }
 }
