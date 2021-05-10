@@ -9,6 +9,7 @@ public class SimpleFollowPlayer : MonoBehaviour
     private Transform target;
     public float dist;
     public float distanceToReact = 10.0f;
+    private bool startedFollowing = false;
 
     // Use this for initialization
     void Start()
@@ -22,14 +23,14 @@ public class SimpleFollowPlayer : MonoBehaviour
     {
         // Devils will start flying (moving towards Vehicle??) if Vehicle is at a close enough distance.
         dist = Vector3.Distance(target.transform.position, transform.position);
-        if (dist < distanceToReact)
+        if (dist < distanceToReact || startedFollowing)
         {
             anim.ResetTrigger("Idle");
             anim.SetTrigger("Fly");
             // enemy will now only follow if the boolean enemyShouldFollow is true
             transform.LookAt(target.position); //With this line the obj rotate
             transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);  //orig. Vector2
-
+            startedFollowing = true;
         }
     }
 
