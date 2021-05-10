@@ -6,23 +6,30 @@ using UnityEngine.SceneManagement;
 public class FragmentMgr : MonoBehaviour
 {
     static public FragmentMgr inst;
-
-    public List<int> collectedFragments;
+    
+    private static List<int> collectedFragments = new List<int>();
 
     //public GameObject vehicle;
 
     private void Awake()
     {
-        inst = this;
+        if(inst == null)
+        {
+            inst = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
 
-        collectedFragments = new List<int>();
-
+        
         // ensure this component will not be destroyed when switching levels
         //DontDestroyOnLoad(this);
     }
 
     private void Start()
     {
+        
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -79,5 +86,24 @@ public class FragmentMgr : MonoBehaviour
             collectedFragments.Add(f.fragmentID);
             Destroy(f.gameObject);
         }
+    }
+
+    public bool WasFragmentCollected(int ID)
+    {
+        if(collectedFragments.Contains(ID))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public int GetFragmentCount()
+    {
+        return collectedFragments.Count;
+    }
+
+    public static List<int> getFragmentList()
+    {
+        return collectedFragments;
     }
 }
