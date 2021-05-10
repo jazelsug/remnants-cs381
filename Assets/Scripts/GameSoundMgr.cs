@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Vehicles.Car;
 
 public class GameSoundMgr : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class GameSoundMgr : MonoBehaviour
     private bool gametimeMusicStarted = false;
     private bool pausedMusicStarted = false;
     private bool endLevelMusicStarted = false;
+
+    public CarAudio carSounds;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +37,8 @@ public class GameSoundMgr : MonoBehaviour
         //user pauses
         if (PausePanel.activeSelf && !pausedMusicStarted)
         {
+            carSounds.StopSound();
+
             gametimeMusic.Pause();
             pausedMusic.Play();
             pausedMusicStarted = true;
@@ -49,11 +54,15 @@ public class GameSoundMgr : MonoBehaviour
             pausedMusic.Pause();
             gametimeMusic.UnPause();
             pausedMusicStarted = false; //for pausing again after pausing and unpausing once
+
+            carSounds.StartSound();
         }
 
         //reach the end of level
         if (GameOverPanel.activeSelf && !endLevelMusicStarted)
         {
+            carSounds.StopSound();
+
             gametimeMusic.Stop();
             endLevelMusic.Play();
             endLevelMusicStarted = true;
