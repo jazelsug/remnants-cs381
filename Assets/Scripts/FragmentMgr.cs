@@ -7,7 +7,7 @@ public class FragmentMgr : MonoBehaviour
 {
     static public FragmentMgr inst;
 
-    private List<int> collectedFragments;
+    public List<int> collectedFragments;
 
     //public GameObject vehicle;
 
