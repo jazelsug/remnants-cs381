@@ -8,6 +8,9 @@ public class FragmentSceneMgr : MonoBehaviour
     private GameObject noFragmentDisplay;
 
     [SerializeField]
+    private GameObject allFragmentDisplay;
+
+    [SerializeField]
     private GameObject[] fragmentPieces;
 
     // Start is called before the first frame update
@@ -31,6 +34,16 @@ public class FragmentSceneMgr : MonoBehaviour
         else
         {
             noFragmentDisplay.SetActive(false);
+
+            //display "All Fragments" text if all 6 fragments have been collected
+            if(FragmentMgr.getFragmentList().Count == 6)
+            {
+                allFragmentDisplay.SetActive(true);
+            }
+            else
+            {
+                allFragmentDisplay.SetActive(false);
+            }
         }
 
         //actions for different fragments with IDs 0-5
