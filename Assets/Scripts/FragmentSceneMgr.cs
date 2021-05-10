@@ -13,6 +13,9 @@ public class FragmentSceneMgr : MonoBehaviour
     [SerializeField]
     private GameObject[] fragmentPieces;
 
+    public AudioSource beforeAllFragmentsAudio;
+    public AudioSource afterAllFragmentsAudio;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +28,11 @@ public class FragmentSceneMgr : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //play before all fragments audio
+        if (!beforeAllFragmentsAudio.isPlaying && FragmentMgr.getFragmentList().Count != 6)
+        {
+            beforeAllFragmentsAudio.Play();
+        }
 
         //display "No Fragments" text if 0 fragments have been collected
         if (FragmentMgr.getFragmentList().Count == 0)
@@ -34,16 +42,6 @@ public class FragmentSceneMgr : MonoBehaviour
         else
         {
             noFragmentDisplay.SetActive(false);
-
-            //display "All Fragments" text if all 6 fragments have been collected
-            if(FragmentMgr.getFragmentList().Count == 6)
-            {
-                allFragmentDisplay.SetActive(true);
-            }
-            else
-            {
-                allFragmentDisplay.SetActive(false);
-            }
         }
 
         //actions for different fragments with IDs 0-5
@@ -70,6 +68,22 @@ public class FragmentSceneMgr : MonoBehaviour
         if (FragmentMgr.getFragmentList().Contains(5))
         {
             fragmentPieces[5].SetActive(true);
+        }
+
+        //display "All Fragments" text if all 6 fragments have been collected
+        if (FragmentMgr.getFragmentList().Count == 6)
+        {
+            allFragmentDisplay.SetActive(true);
+
+            //play after all fragments audio
+            if (!afterAllFragmentsAudio.isPlaying)
+            {
+                afterAllFragmentsAudio.Play();
+            }
+        }
+        else
+        {
+            allFragmentDisplay.SetActive(false);
         }
     }
 }
