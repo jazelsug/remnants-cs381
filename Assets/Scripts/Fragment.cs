@@ -46,6 +46,9 @@ public class Fragment : MonoBehaviour
         {
             //add current fragment to list of collected fragments
             FragmentMgr.inst.CollectFragment(this);
+
+            Debug.Log("Collected Fragment");
+            Destroy(gameObject);
         }
     }
 }
