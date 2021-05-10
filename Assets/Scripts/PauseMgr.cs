@@ -7,6 +7,7 @@ public class PauseMgr : MonoBehaviour
     public GameObject PausePanel;
     public GameObject GametimePanel;
     public GameObject ConfirmQuitPanel;
+    public GameObject EndLevelPanel;    //included to ensure the user cannot pause when level has ended
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +19,7 @@ public class PauseMgr : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!PausePanel.activeSelf && Input.GetKeyUp(KeyCode.P) && !ConfirmQuitPanel.activeSelf)
+        if (!PausePanel.activeSelf && Input.GetKeyUp(KeyCode.P) && !ConfirmQuitPanel.activeSelf && !EndLevelPanel.activeSelf)
         {
             //P is pressed, Pause Panel is inactive, and ConfirmQuit Panel is inactive
             Timer.inst.timerIsRunning = false;  //pause the timer
@@ -26,7 +27,7 @@ public class PauseMgr : MonoBehaviour
             GametimePanel.SetActive(false); //deactivate the Gametime Panel
             PausePanel.SetActive(true);
         }
-        else if(PausePanel.activeSelf && Input.GetKeyUp(KeyCode.P))
+        else if(PausePanel.activeSelf && Input.GetKeyUp(KeyCode.P) && !EndLevelPanel.activeSelf)
         {
             //P is pressed and Pause Panel is active
             PausePanel.SetActive(false);

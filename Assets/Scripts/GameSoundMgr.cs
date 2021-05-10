@@ -14,7 +14,7 @@ public class GameSoundMgr : MonoBehaviour
     public AudioSource pausedMusic;
     public AudioSource endLevelMusic;
 
-    private bool gametimeMusicStarted = false;
+    //private bool gametimeMusicStarted = false;
     private bool pausedMusicStarted = false;
     private bool endLevelMusicStarted = false;
 
@@ -28,7 +28,7 @@ public class GameSoundMgr : MonoBehaviour
         pausedMusicStarted = false;
         endLevelMusicStarted = false;
         gametimeMusic.Play();
-        gametimeMusicStarted = true;
+        //gametimeMusicStarted = true;
     }
 
     // Update is called once per frame

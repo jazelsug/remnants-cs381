@@ -45,7 +45,7 @@ public class SimpleFollowPlayer : MonoBehaviour
             Destroy(gameObject);
 
             // Spawn fragment
-            Instantiate(Devil.inst.fragment, transform.position, Quaternion.identity);
+            //Instantiate(Devil.inst.fragment, transform.position, Quaternion.identity);
 
             AIMgr.inst.AddMoreMonsters();
         }
