@@ -5,12 +5,13 @@ using UnityEngine;
 public class Fragment : MonoBehaviour
 {
     public int fragmentID;
+    public AudioSource fragmentPickupSound;
     //static public bool collected;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        //fragmentPickupSound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -44,10 +45,12 @@ public class Fragment : MonoBehaviour
     {
         if (collision.gameObject.name == "Car")
         {
+            //play fragment collect sound
+            fragmentPickupSound.Play();
+
             //add current fragment to list of collected fragments
             FragmentMgr.inst.CollectFragment(this);
 
-            Debug.Log("Collected Fragment");
             Destroy(gameObject);
         }
     }
