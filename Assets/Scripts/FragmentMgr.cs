@@ -9,7 +9,7 @@ public class FragmentMgr : MonoBehaviour
 
     private List<int> collectedFragments;
 
-    public GameObject vehicle;
+    //public GameObject vehicle;
 
     private void Awake()
     {
