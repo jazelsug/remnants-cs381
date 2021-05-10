@@ -1,6 +1,6 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class SceneMgr : MonoBehaviour
@@ -12,52 +12,59 @@ public class SceneMgr : MonoBehaviour
         inst = this;
     }
 
-    /*
-    public static int sceneIndex;
+    public Slider slider;
+    public Text progressText;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        if (sceneIndex == 0)
+        if (slider != null)
         {
-            StartCoroutine(ToGameMenu());
+            slider.gameObject.SetActive(false);
         }
     }
-    */
-    /**
-     * Loading MenuScene asynchronously
-     * */
-    /*
-    IEnumerator ToGameMenu()
+
+    public void LoadOption(int sceneIndex)
     {
-        yield return new WaitForSeconds(5);
-        sceneIndex = 1;
-        SceneManager.LoadScene(sceneIndex);
+        StartCoroutine(LoadAsync(sceneIndex));
     }
-    */
+
+    IEnumerator LoadAsync(int sceneIndex)
+    {
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
+
+        slider.gameObject.SetActive(true);
+
+        while (!operation.isDone)
+        {
+            float progress = Mathf.Clamp01(operation.progress / 0.9f);
+            slider.value = progress;
+            progressText.text = progress * 100f + "%";
+            yield return null;
+        }
+    }
+
     public void PlayGame()
     {
         //Scene 2 is StreetScene
-        //sceneIndex = 2;
-        SceneManager.LoadScene(2);
+        LoadOption(2);
     }
 
     public void GoToMenu()
     {
-        //Scene 1 is Menu
+        //Scene 1 is Loader
         SceneManager.LoadScene(1);
     }
 
     public void GoToCredits()
     {
         //Scene 3 is Credits
-        SceneManager.LoadScene(3);
+        LoadOption(3);
     }
 
     public void GoToFragments()
     {
         //Scene 4 is Fragments
-        SceneManager.LoadScene(4);
+        LoadOption(4);
     }
 
     public void QuitGame()
